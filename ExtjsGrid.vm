@@ -1,0 +1,5 @@
+#checkId($entity)
+Ext.define('${PROJECT_NAME}.view.grid.${entity.name}', {
+    extend: '${PROJECT_NAME}.view.grid.gen.${entity.name}Gen',
+    xtype: '${fn.toLowerCase(${entity.name})}-grid'
+});

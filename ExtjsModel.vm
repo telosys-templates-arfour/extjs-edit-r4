@@ -1,0 +1,5 @@
+#checkId($entity)
+Ext.define('${PROJECT_NAME}.model.${entity.name}', {
+    extend: '${PROJECT_NAME}.model.gen.${entity.name}Gen',
+    alias: 'model.${fn.toLowerCase(${entity.name})}'
+});
