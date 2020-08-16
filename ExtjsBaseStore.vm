@@ -1,0 +1,25 @@
+Ext.define('${PROJECT_NAME}.store.base.BaseStore', {
+    extend: 'Ext.data.Store',
+    pageSize: 20,
+    urlApiPath: '/',
+    apiRootProperty: '',
+    constructor: function (config) {
+        this.callParent(config);
+        this.getProxy().setUrl(${PROJECT_NAME}.Vars.baseStoreProxyUrl + this.urlApiPath);
+        this.getProxy().getApi().create = ${PROJECT_NAME}.Vars.baseStoreProxyUrl + this.urlApiPath;
+        this.getProxy().getApi().update = ${PROJECT_NAME}.Vars.baseStoreProxyUrl + this.urlApiPath;
+        this.getProxy().getApi().destroy = ${PROJECT_NAME}.Vars.baseStoreProxyUrl + this.urlApiPath;
+        this.getProxy().getReader().setRootProperty('_embedded.' + this.apiRootProperty);
+    },
+    proxy: {
+        type: 'rest',
+        reader: {
+            type: 'json',
+            totalProperty: 'page.totalElements'
+        },
+        writer: {
+            type: 'json',
+            writeAllFields: true
+        }
+    }
+});
