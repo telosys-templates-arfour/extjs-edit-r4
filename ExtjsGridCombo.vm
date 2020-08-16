@@ -1,0 +1,10 @@
+Ext.define('${PROJECT_NAME}.view.grid.tbar.${entity.name}', {
+    extend: '${PROJECT_NAME}.view.grid.tbar.gen.${entity.name}Gen',
+    xtype: 'tbar.${fn.toLowerCase(${entity.name})}.combo',
+    // extjs default queryParam: 'query'
+    queryParam: 'query',
+    // extjs default displayField: 'text'
+    displayField: 'text',
+    // ${entity.name}Gen default queryPath: '/search/findByQuery'
+    urlSearchApiQueryPath: '/search/findByQuery'
+});
