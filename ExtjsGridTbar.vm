@@ -1,0 +1,13 @@
+Ext.define('${PROJECT_NAME}.view.grid.tbar.base.GridTbar', {
+    extend: 'Ext.toolbar.Toolbar',
+    requires: ['Ext.form.Label'],
+    xtype: 'gridtbar',
+    id: 'gridtbar',
+    items: [{
+        xtype: 'button',
+        text: 'Sync',
+        handler: function (thisObj) {
+            thisObj.findParentByType("grid").getStore().sync();
+        }
+    }]
+});
