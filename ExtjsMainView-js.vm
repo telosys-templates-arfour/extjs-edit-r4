@@ -1,0 +1,58 @@
+Ext.define('${PROJECT_NAME}.view.main.MainView', {
+    extend: 'Ext.container.Viewport',
+    xtype: 'app-main-view',
+
+    layout: 'border',
+    id: 'mainLayout',
+    bodyBorder: false,
+
+    defaults: {
+        split: true,
+        bodyPadding: 10,
+        id: 'contentwindow',
+        margin: '5 0 0 0'
+    },
+
+    items: [{
+        title: '${PROJECT_NAME}',
+        region: 'west',
+        id: 'menuwindow',
+        floatable: false,
+        collapsible: true,
+        width: 210,
+        minWidth: 100,
+        maxWidth: 250,
+        collapsible: false,
+        items: [{
+            html: '<h2>xtype to render</h2>'
+        }, {
+            xtype: 'textfield'
+        }, {
+            xtype: 'button',
+            text: 'try it!',
+            handler: function (thisObj) {
+                let mainlayout = Ext.getCmp('mainLayout');
+                mainlayout.remove(Ext.getCmp('contentwindow'));
+                mainlayout.add({
+                    xtype: thisObj.prev().getValue(),
+                    region: 'center'
+                });
+            }
+        }]
+    }, {
+        title: 'Main Content',
+        collapsible: false,
+        region: 'center',
+        items: [{
+            html: '<h2>Main Page</h2><p>This is where the main content would go</p>'
+        }]
+    }]
+});
+Ext.Object.each(Ext.ClassManager.aliasToName, function (alias, className) {
+    if (className.startsWith('${PROJECT_NAME}.view')) {
+        let aliasParts = alias.split('.');
+        if (aliasParts[0] === 'widget' && aliasParts[1].endsWith('-grid')) {
+            console.log('xtype = [' + aliasParts[1] + ']', 'class = ' + className);
+        }
+    }
+});
