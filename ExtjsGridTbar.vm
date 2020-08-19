@@ -9,5 +9,18 @@ Ext.define('${PROJECT_NAME}.view.grid.tbar.base.GridTbar', {
         handler: function (thisObj) {
             thisObj.findParentByType("grid").getStore().sync();
         }
-    }]
-});
+    }, {
+        xtype: 'button',
+        text: 'Add',
+        handler: function (thisObj) {
+            let gridStore = thisObj.findParentByType("grid").getStore();
+            let storeModelClass = gridStore.getModel();
+            let objTmp = {};
+            objTmp[storeModelClass.idProperty] = '0';
+            let storeModel = new storeModelClass(objTmp);
+            gridStore.add(storeModel);
+        }
+    }
+    ]
+})
+;
