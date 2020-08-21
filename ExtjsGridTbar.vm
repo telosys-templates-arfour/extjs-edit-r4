@@ -20,6 +20,19 @@ Ext.define('${PROJECT_NAME}.view.grid.tbar.base.GridTbar', {
             let storeModel = new storeModelClass(objTmp);
             gridStore.add(storeModel);
         }
+    }, {
+        xtype: 'button',
+        text: 'Del',
+        handler: function (thisObj) {
+            let grid = thisObj.findParentByType("grid");
+            let gridStore = grid.getStore();
+            let selection = grid.getSelection();
+            if (selection.length === 1) {
+                gridStore.remove(selection[0])
+                gridStore.sync();
+            }
+            //grid.getStore().removeAt(rowIndex);
+        }
     }
     ]
 })
