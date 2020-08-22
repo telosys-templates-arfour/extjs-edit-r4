@@ -3,6 +3,9 @@ Ext.define('${PROJECT_NAME}.view.grid.base.BaseGrid', {
     requires: ['${PROJECT_NAME}.view.grid.tbar.base.GridTbar'],
     autoLoad: true,
     minHeight: 400,
+    titleAlign: 'center',
+    titleRotation: 2,
+    headerPosition: 'left',
     tbar: {
         xtype: 'gridtbar'
     },
